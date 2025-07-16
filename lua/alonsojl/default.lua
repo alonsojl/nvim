@@ -47,7 +47,6 @@ vim.keymap.set("n", "<leader>wc", "<C-W>c", { desc = "Delete Window", remap = tr
 vim.keymap.set("n", "<leader>ws", "<C-W>s", { desc = "Split Window Below", remap = true })
 vim.keymap.set("n", "<leader>wv", "<C-W>v", { desc = "Split Window Right", remap = true })
 
-
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(e)
         local opts = { buffer = e.buf }

@@ -1,11 +1,16 @@
 return {
-  "crnvl96/lazydocker.nvim",
-  event = "VeryLazy",
-  dependencies = {
-    "MunifTanjim/nui.nvim",
+  'crnvl96/lazydocker.nvim',
+   keys = {
+      { "<leader>ld", "<Cmd>lua LazyDocker.toggle()<CR>", desc = "Docker" }
+   },
+   opts = {
+    window = {
+      settings = {
+        width = 0.90, -- Percentage of screen width (0 to 1)
+        height = 0.90, -- Percentage of screen height (0 to 1)
+        border = 'rounded', -- See ':h nvim_open_win' border options
+        relative = 'editor', -- See ':h nvim_open_win' relative options
+      },
+    },
   },
-  config = function()
-    require("lazydocker").setup()
-    vim.keymap.set("n", "<leader>d", "<cmd>LazyDocker<CR>", { desc = "Toggle LazyDocker", noremap = true, silent = true })
-  end
 }
