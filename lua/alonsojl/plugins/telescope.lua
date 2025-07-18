@@ -48,11 +48,13 @@ return {
 
         map('n', '<C-p>', builtin.git_files, opts)
         map("n", "<leader>ff", builtin.find_files, opts)    -- Lists files in your current working directory, respects .gitignore
-        map("n", "<leader>fx", builtin.treesitter, opts)    -- Lists tree-sitter symbols
+        map("n", "<leader>ft", builtin.treesitter, opts)    -- Lists tree-sitter symbols
         map("n", "<leader>fs", builtin.spell_suggest, opts) -- Lists spell options
         map('n', '<leader>fg', builtin.live_grep, {})
         map('n', '<leader>fb', builtin.buffers, {})
         map('n', '<leader>fh', builtin.help_tags, {})
         map('n', '<leader>fc', builtin.git_commits, {})
+        map('n', '<leader>fw', builtin.grep_string, {})
+        map('n', '<leader>f/', builtin.current_buffer_fuzzy_find, {})
     end
 }
