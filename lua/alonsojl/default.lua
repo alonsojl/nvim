@@ -51,6 +51,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(e)
         local opts = { buffer = e.buf }
         vim.keymap.set("n", "gh", function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set("n", "rn", function() vim.lsp.buf.rename() end, opts)
     end
 })
