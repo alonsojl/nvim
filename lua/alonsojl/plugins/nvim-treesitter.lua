@@ -22,8 +22,9 @@ return {
         treesitter.setup({
             ensure_installed = {
                 "csv", "dockerfile", "gitignore", "go", "gomod", "gosum",
-                "gowork", "javascript", "json", "lua", "markdown", "proto",
-                "python", "rego", "ruby", "sql", "svelte", "yaml", "php"
+                "gowork", "javascript", "json", "lua", "markdown",
+                "markdown_inline", "proto", "python", "rego", "ruby", "sql",
+                "svelte", "yaml", "php"
             },
             indent = {enable = true},
             auto_install = true,
