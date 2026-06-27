@@ -12,7 +12,7 @@ return {
         }
     },
     config = function()
-        require("go").setup()
+        require("go").setup({lsp_codelens = false})
         require("navigator").setup(
             {
                 lsp_signature_help = true, -- enable ray-x/lsp_signature
