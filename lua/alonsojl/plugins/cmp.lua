@@ -80,11 +80,32 @@ return {
             capabilities = require("cmp_nvim_lsp").default_capabilities()
         })
 
+        -- Python: pyright owns types/hover, ruff owns lint + formatting.
+        -- Disable ruff's hover so pyright is the single hover provider.
+        vim.lsp.config("ruff", {
+            on_attach = function(client)
+                client.server_capabilities.hoverProvider = false
+            end
+        })
+
+        -- Format Python on save with ruff (pyright does not format)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = "*.py",
+            group = vim.api.nvim_create_augroup("py_format_on_save", {clear = true}),
+            callback = function()
+                vim.lsp.buf.format({
+                    filter = function(client)
+                        return client.name == "ruff"
+                    end
+                })
+            end
+        })
+
         -- Go's gopls is configured and enabled by `navigator` (navigator.lua),
         -- so it is intentionally not listed here.
-        -- Python: brew install pyright
+        -- Python: pip install pyright ruff   (or: npm i -g pyright)
         -- Ruby:   gem install solargraph
         -- PHP:    https://phpactor.readthedocs.io/en/master/usage/standalone.html#installation
-        vim.lsp.enable({"pyright", "solargraph", "phpactor"})
+        vim.lsp.enable({"pyright", "ruff", "solargraph", "phpactor"})
     end
 }
